@@ -79,7 +79,7 @@ app.secret_key = secrets.token_urlsafe(32)
 if os.getenv("HOST"):
     host = os.getenv("HOST")
 else:
-    host = "0.0.0.0:8059"
+    host = "100.103.131.112:8059"
 logger.info(f"Server started on http://{host}")
 
 logger.info(f"Using config file: {configFile}")
@@ -628,7 +628,7 @@ def playlist():
     
     logger.info("Playlist Requested")
     
-    current_host = request.host or "0.0.0.0:8059"
+    current_host = request.host or "100.103.131.112:8059"
     
     if cached_playlist is None or len(cached_playlist) == 0 or last_playlist_host != current_host:
         logger.info(f"Regenerating playlist due to host change: {last_playlist_host} -> {current_host}")
@@ -646,7 +646,7 @@ def generate_playlist():
     global cached_playlist
     logger.info("Generating playlist.m3u...")
 
-    playlist_host = request.host or "0.0.0.0:8059"
+    playlist_host = request.host or "100.103.131.112:8059"
     
     channels = []
     portals = getPortals()
@@ -1243,4 +1243,4 @@ if __name__ == "__main__":
     start_refresh()
     
     # Always use waitress for production in container
-    waitress.serve(app, host="0.0.0.0", port=8059, _quiet=True, threads=24) 
+    waitress.serve(app, host="100.103.131.112", port=8059, _quiet=True, threads=24) 
