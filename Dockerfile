@@ -33,7 +33,7 @@ RUN useradd -m -u 1000 macreplay && \
 USER macreplay
 
 # Set environment variables for containerized deployment
-ENV HOST=0.0.0.0:8059
+ENV HOST=100.103.131.112:8059
 ENV CONFIG=/app/data/MacReplay.json
 ENV PYTHONUNBUFFERED=1
 
