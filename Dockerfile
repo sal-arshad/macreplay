@@ -33,7 +33,7 @@ RUN useradd -m -u 1000 macreplay && \
 USER macreplay
 
 # Set environment variables for containerized deployment
-ENV HOST=100.103.131.112:8059
+ENV HOST=0.0.0.0:8059
 ENV CONFIG=/app/data/MacReplay.json
 ENV PYTHONUNBUFFERED=1
 
@@ -42,7 +42,7 @@ EXPOSE 8059
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://100.103.131.112:8059/ || exit 1
+    CMD curl -f http://localhost:8059/ || exit 1
 
 # Run the application
 CMD ["python", "app.py"] 
